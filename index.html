@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AMDOMICILIO - Cuidados Domiciliares</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --lilas:#8E6FD8;
+      --rosa:#F5A6C8;
+      --verde:#7ED321;
+      --verde-escuro:#5DA51A;
+      --texto:#333;
+      --cinza:#666;
+      --fundo:#FFF;
+      --fundo-suave:#FAF7FF;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Poppins', sans-serif;
+      color:var(--texto);
+      background:#fff;
+      line-height:1.6;
+    }
+
+    .container{
+      width:90%;
+      max-width:1200px;
+      margin:auto;
+    }
+
+    section{
+      padding:80px 0;
+    }
+
+    h1,h2,h3{
+      line-height:1.2;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:50px;
+    }
+
+    .section-title h2{
+      font-size:2.2rem;
+      color:var(--lilas);
+      margin-bottom:10px;
+    }
+
+    .section-title p{
+      color:var(--cinza);
+    }
+
+    /* HERO */
+    .hero{
+      background:linear-gradient(135deg,#fff 0%, #f9f2ff 50%, #fff5fa 100%);
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+    }
+
+    .hero-content{
+      display:grid;
+      grid-template-columns:1.1fr 1fr;
+      gap:50px;
+      align-items:center;
+    }
+
+    .hero h1{
+      font-size:3.2rem;
+      color:var(--lilas);
+      margin-bottom:20px;
+    }
+
+    .hero p{
+      font-size:1.15rem;
+      color:#555;
+      margin-bottom:30px;
+    }
+
+    .buttons{
+      display:flex;
+      gap:15px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:16px 28px;
+      border-radius:14px;
+      text-decoration:none;
+      font-weight:600;
+      transition:.3s;
+      text-align:center;
+    }
+
+    .btn-primary{
+      background:var(--verde);
+      color:#fff;
+      box-shadow:0 10px 25px rgba(126,211,33,.25);
+    }
+
+    .btn-primary:hover{
+      background:var(--verde-escuro);
+      transform:translateY(-2px);
+    }
+
+    .btn-secondary{
+      background:var(--lilas);
+      color:#fff;
+      box-shadow:0 10px 25px rgba(142,111,216,.25);
+    }
+
+    .btn-secondary:hover{
+      background:#7759c9;
+      transform:translateY(-2px);
+    }
+
+    .hero-image img{
+      width:100%;
+      border-radius:24px;
+      object-fit:cover;
+      box-shadow:0 20px 40px rgba(0,0,0,.12);
+    }
+
+    /* SOBRE */
+    .about{
+      background:var(--fundo-suave);
+    }
+
+    .about-content{
+      max-width:900px;
+      margin:auto;
+      text-align:center;
+    }
+
+    .about-content p{
+      margin-bottom:22px;
+      font-size:1.05rem;
+    }
+
+    /* CARDS */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:25px;
+    }
+
+    .card{
+      background:#fff;
+      padding:30px;
+      border-radius:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,.06);
+      transition:.3s;
+      border:1px solid rgba(142,111,216,.08);
+    }
+
+    .card:hover{
+      transform:translateY(-6px);
+    }
+
+    .icon{
+      width:64px;
+      height:64px;
+      border-radius:16px;
+      background:linear-gradient(135deg,var(--lilas),var(--rosa));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:30px;
+      color:#fff;
+      margin-bottom:18px;
+    }
+
+    .card h3{
+      margin-bottom:10px;
+      color:var(--lilas);
+      font-size:1.2rem;
+    }
+
+    .card p{
+      color:var(--cinza);
+    }
+
+    /* DIFERENCIAIS */
+    .why{
+      background:var(--fundo-suave);
+    }
+
+    .why .card{
+      text-align:center;
+    }
+
+    /* DEPOIMENTOS */
+    .testimonials-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:25px;
+    }
+
+    .testimonial{
+      background:#fff;
+      padding:35px;
+      border-radius:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,.06);
+      border-left:5px solid var(--verde);
+    }
+
+    .testimonial p{
+      font-style:italic;
+      margin-bottom:18px;
+      color:#555;
+    }
+
+    .testimonial strong{
+      color:var(--lilas);
+    }
+
+    /* CONTATO */
+    .contact{
+      background:linear-gradient(135deg,#fff,#faf7ff);
+    }
+
+    .contact-wrapper{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:40px;
+      align-items:start;
+    }
+
+    form{
+      background:#fff;
+      padding:35px;
+      border-radius:22px;
+      box-shadow:0 10px 30px rgba(0,0,0,.06);
+    }
+
+    .field{
+      margin-bottom:18px;
+    }
+
+    .field label{
+      display:block;
+      margin-bottom:8px;
+      font-weight:600;
+    }
+
+    .field input,
+    .field textarea{
+      width:100%;
+      padding:14px;
+      border:1px solid #ddd;
+      border-radius:12px;
+      font-family:inherit;
+      font-size:1rem;
+    }
+
+    .field textarea{
+      min-height:140px;
+      resize:vertical;
+    }
+
+    .contact-info{
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+    }
+
+    .info-card{
+      background:#fff;
+      padding:30px;
+      border-radius:22px;
+      box-shadow:0 10px 30px rgba(0,0,0,.06);
+    }
+
+    .whatsapp-buttons{
+      display:flex;
+      flex-direction:column;
+      gap:15px;
+      margin-top:20px;
+    }
+
+    .btn-whats{
+      background:var(--verde);
+      color:#fff;
+      padding:18px;
+      border-radius:14px;
+      text-decoration:none;
+      font-weight:700;
+      text-align:center;
+      transition:.3s;
+    }
+
+    .btn-whats:hover{
+      background:var(--verde-escuro);
+      transform:translateY(-2px);
+    }
+
+    /* FOOTER */
+    footer{
+      background:var(--lilas);
+      color:#fff;
+      text-align:center;
+      padding:35px 20px;
+    }
+
+    footer p{
+      margin:6px 0;
+    }
+
+    footer a{
+      color:#fff;
+      text-decoration:none;
+      font-weight:600;
+    }
+
+    /* RESPONSIVO */
+    @media(max-width:992px){
+      .hero-content,
+      .contact-wrapper{
+        grid-template-columns:1fr;
+      }
+
+      .grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .hero h1{
+        font-size:2.6rem;
+      }
+    }
+
+    @media(max-width:768px){
+      section{
+        padding:60px 0;
+      }
+
+      .grid,
+      .testimonials-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero{
+        min-height:auto;
+        padding-top:60px;
+      }
+
+      .hero h1{
+        font-size:2.2rem;
+      }
+
+      .hero p{
+        font-size:1rem;
+      }
+
+      .buttons{
+        flex-direction:column;
+      }
+
+      .btn{
+        width:100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="container hero-content">
+      <div>
+        <h1>Cuidado e Carinho para Quem Você Mais Ama</h1>
+        <p>
+          A <strong>AMDOMICILIO</strong> oferece cuidadores de idosos treinados e qualificados
+          para atender no conforto do seu lar em Salvador-BA e região.
+        </p>
+
+        <div class="buttons">
+          <a class="btn btn-primary" target="_blank"
+             href="https://wa.me/5571986520932?text=Olá! Gostaria de solicitar um orçamento para cuidados domiciliares.">
+             Falar no WhatsApp 1
+          </a>
+
+          <a class="btn btn-secondary" target="_blank"
+             href="https://wa.me/5571981826153?text=Olá! Gostaria de solicitar um orçamento para cuidados domiciliares.">
+             Falar no WhatsApp 2
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?q=80&w=1200&auto=format&fit=crop"
+             alt="Cuidadora auxiliando uma pessoa idosa em casa">
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="about" id="sobre">
+    <div class="container">
+      <div class="section-title">
+        <h2>Sobre a AMDOMICILIO</h2>
+      </div>
+
+      <div class="about-content">
+        <p>
+          A <strong>AMDOMICILIO</strong> nasceu com a missão de levar respeito, dignidade e segurança
+          para a melhor idade. Acreditamos que cada pessoa merece ser cuidada com carinho,
+          atenção e humanidade em todas as fases da vida.
+        </p>
+
+        <p>
+          Nossa equipe é formada por cuidadores capacitados, treinados e comprometidos em oferecer
+          um atendimento humanizado e personalizado. Trabalhamos lado a lado com a família,
+          proporcionando tranquilidade e confiança em cada cuidado realizado.
+        </p>
+
+        <p>
+          Sabemos que o lar é o lugar onde existem as melhores lembranças, o aconchego e o afeto.
+          Por isso, oferecemos cuidados domiciliares que permitem ao idoso envelhecer com conforto,
+          autonomia e qualidade de vida, cercado por quem ama.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section id="servicos">
+    <div class="container">
+      <div class="section-title">
+        <h2>Nossos Serviços</h2>
+        <p>Assistência profissional e acolhedora para diferentes necessidades.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="icon">🕒</div>
+          <h3>Plantão 12h e 24h</h3>
+          <p>Acompanhamento integral dia e noite com revezamento de cuidadores.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🏠</div>
+          <h3>Cuidador por Horas</h3>
+          <p>Flexibilidade para consultas, banho, alimentação e companhia.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🏥</div>
+          <h3>Acompanhamento Hospitalar</h3>
+          <p>Profissional para acompanhar em consultas, exames e internações.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">❤️</div>
+          <h3>Companhia e Atividades</h3>
+          <p>Estimulação, conversa, leitura e caminhadas para qualidade de vida.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAIS -->
+  <section class="why" id="diferenciais">
+    <div class="container">
+      <div class="section-title">
+        <h2>Por que escolher a AMDOMICILIO?</h2>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="icon">👩‍⚕️</div>
+          <h3>Cuidadores Treinados</h3>
+          <p>Profissionais capacitados, experientes e referenciados.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">📄</div>
+          <h3>Contrato Seguro</h3>
+          <p>Transparência, responsabilidade e segurança para sua família.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🤝</div>
+          <h3>Atendimento Humanizado</h3>
+          <p>Cuidado personalizado respeitando as necessidades de cada idoso.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">📞</div>
+          <h3>Suporte 24h</h3>
+          <p>Atendimento em Salvador e toda a região sempre que precisar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section id="depoimentos">
+    <div class="container">
+      <div class="section-title">
+        <h2>O que as famílias dizem</h2>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial">
+          <p>
+            “Contratamos a AMDOMICILIO para cuidar da minha mãe e encontramos profissionais
+            extremamente atenciosos. Hoje temos a tranquilidade de saber que ela está sendo
+            cuidada com carinho e respeito.”
+          </p>
+          <strong>— Ana Paula, filha de paciente</strong>
+        </div>
+
+        <div class="testimonial">
+          <p>
+            “Meu pai precisava de acompanhamento diário e a equipe da AMDOMICILIO nos deu todo o suporte.
+            O atendimento é humano, pontual e sempre muito acolhedor. Somos muito gratos.”
+          </p>
+          <strong>— Ricardo Almeida, filho de paciente</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="contact" id="contato">
+    <div class="container">
+      <div class="section-title">
+        <h2>Fale com a AMDOMICILIO</h2>
+        <p>Estamos prontos para cuidar de quem você ama. Solicite um orçamento sem compromisso.</p>
+      </div>
+
+      <div class="contact-wrapper">
+        <form id="contactForm">
+          <div class="field">
+            <label>Nome</label>
+            <input type="text" id="nome" placeholder="Seu nome" required>
+          </div>
+
+          <div class="field">
+            <label>Telefone</label>
+            <input type="tel" id="telefone" placeholder="(71) 99999-9999" required>
+          </div>
+
+          <div class="field">
+            <label>Mensagem</label>
+            <textarea id="mensagem" placeholder="Como podemos ajudar?" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-secondary" style="border:none; cursor:pointer; width:100%;">
+            Enviar pelo WhatsApp
+          </button>
+        </form>
+
+        <div class="contact-info">
+          <div class="info-card">
+            <h3 style="color:var(--lilas); margin-bottom:10px;">Atendimento</h3>
+            <p><strong>AMDOMICILIO</strong></p>
+            <p>Atendemos em Salvador - BA e toda a região.</p>
+
+            <div class="whatsapp-buttons">
+              <a class="btn-whats" target="_blank"
+                 href="https://wa.me/5571986520932?text=Olá! Gostaria de solicitar um orçamento para cuidados domiciliares.">
+                 WhatsApp 71 98652-0932
+              </a>
+
+              <a class="btn-whats" target="_blank"
+                 href="https://wa.me/5571981826153?text=Olá! Gostaria de solicitar um orçamento para cuidados domiciliares.">
+                 WhatsApp 71 98182-6153
+              </a>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <h3 style="color:var(--lilas); margin-bottom:10px;">Nosso compromisso</h3>
+            <p>✔ Atendimento humanizado</p>
+            <p>✔ Cuidadores treinados</p>
+            <p>✔ Contrato seguro</p>
+            <p>✔ Suporte e atendimento 24h</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <p><strong>AMDOMICILIO - Cuidados Domiciliares © 2026</strong></p>
+    <p>Todos os direitos reservados.</p>
+    <p>CNPJ: 36.635.626/0001-11</p>
+    <p>Instagram: <a href="https://instagram.com/amdomocilio" target="_blank">@amdomocilio</a></p>
+  </footer>
+
+  <script>
+    // Envio do formulário para WhatsApp
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+
+      const nome = document.getElementById('nome').value;
+      const telefone = document.getElementById('telefone').value;
+      const mensagem = document.getElementById('mensagem').value;
+
+      const texto = `Olá! Meu nome é ${nome}.%0A%0ATelefone: ${telefone}.%0A%0AMensagem: ${mensagem}`;
+      const url = `https://wa.me/5571986520932?text=${texto}`;
+
+      window.open(url, '_blank');
+    });
+  </script>
+
+</body>
+</html>
